@@ -1,0 +1,46 @@
+-------------------- Veri Tabanını Tablolarını Oluşturmak İçin Script (Script to create Database Tables ) --------------
+CREATE TABLE Users(
+id int IDENTITY(1,1) primary key,
+fullname varchar(50),
+email varchar(50),
+phno varchar(50),
+userpassword varchar(50),
+adress varchar(50),
+landmark varchar(50),
+             city varchar(50),
+state varchar(50),
+pincode varchar(50),
+)
+CREATE TABLE book_dtls(
+id int IDENTITY(1,1) primary key,
+bookname varchar(50),
+author varchar(50),
+price varchar(50),
+bookCategory varchar(50),
+status varchar(50),
+photo varchar(850),
+email varchar(50),
+) 
+ 
+CREATE TABLE book_order(
+order_id int IDENTITY(1,1) primary key,
+users_id int foreign key references  Users(id),
+book_id int foreign key references book_dtls(id),
+e_mail varchar(250),
+order_address varchar(500),
+phone_number varchar(20),
+book_name varchar(500),
+author_name varchar(500),
+price varchar(100),
+payment_type varchar(100),
+)
+ 
+CREATE TABLE cart(
+cartId int IDENTITY(1,1) primary key,
+bookId int foreign key references book_dtls(id),
+userId int foreign key references  Users(id),
+bookName varchar(100),
+authorName varchar(100),
+price varchar(50),
+totalPrice varchar(50),
+)
